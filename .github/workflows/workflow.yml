@@ -13,13 +13,13 @@ jobs:
 
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v3.0.0
-        with:
-          FOLDER: rock5b      #directory to generate index
+        #with:
+        #  FOLDER: rock5b      #directory to generate index
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        with:
-          path: 'rock5b'      # upload generated folder
+        #with:
+        #  path: 'rock5b'      # upload generated folder
   
   deploy:
     needs: pages-directory-listing
