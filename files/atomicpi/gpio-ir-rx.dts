@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+  fragment@0 {
+    target-path="/";
+    __overlay__ {
+      ir: ir-receiver {
+        compatible = "gpio-ir-receiver";
+        gpios = <&gpiochip_stub_341 7 1>;
+        linux,rc-map-name = "rc-rc6-mce";
+      };
+    };
+  };
+};
