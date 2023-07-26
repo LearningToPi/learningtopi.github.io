@@ -1,0 +1,40 @@
+/dts-v1/;
+
+/ {
+	compatible = "allwinner,sun50i-h616";
+
+	fragment@0 {
+		target-path = "/aliases";
+
+		__overlay__ {
+			spi1 = "/soc/spi@5011000";
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "okay";
+			#address-cells = <0x01>;
+			#size-cells = <0x00>;
+			cs-gpios = <0x00000031 0x00000002 0x0000000b 0x00000000>;
+
+			spidev@1 {
+				compatible = "rohm,dh2228fv";
+				status = "okay";
+				reg = <0x01>;
+				spi-max-frequency = <0xf4240>;
+				phandle = <0x01>;
+			};
+		};
+	};
+
+	__symbols__ {
+		spidev1_1 = "/fragment@1/__overlay__/spidev@1";
+	};
+
+	__fixups__ {
+		spi1 = "/fragment@1:target:0";
+	};
+};

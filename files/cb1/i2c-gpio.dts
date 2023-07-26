@@ -1,0 +1,18 @@
+// Enable the bit-banging i2c driver - pulled from "light" overlay to enable individually
+/dts-v1/;
+
+/ {
+	compatible = "allwinner,sun50i-h616";
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "okay";
+		};
+	};
+
+	__fixups__ {
+		i2c_gpio = "/fragment@0:target:0";
+	};
+};

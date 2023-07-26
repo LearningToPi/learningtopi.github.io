@@ -1,0 +1,27 @@
+// Disable UART and enable the physical I2C on the same pins
+// NOTE:  This does enable the I2C, however I wasn't able to get it to work with an I2C display
+/dts-v1/;
+
+/ {
+	compatible = "allwinner,sun50i-h616";
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+        fragment@1 {
+		target = "<0xffffffff>";
+		__overlay__ {
+			status = "ok";
+		};
+	};
+
+	__fixups__ {
+		uart0 = "/fragment@0:target:0";
+                i2c1 = "/fragment@1:target:0";
+	};
+};
