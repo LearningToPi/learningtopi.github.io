@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			gpio-ir-receiver-58 {
+				compatible = "gpio-ir-receiver";
+				status = "okay";
+				gpios = <&gpio1 26 1>;
+			};
+		};
+	};
+};
